@@ -187,7 +187,7 @@ msf exploit(bypassuac) > exploit
 [*] Exploit completed, but no session was created.
 ```
 
-Eventhough omitted in msfconsole listing, one can query for `info` of exploit and it tells pretty clearly that one must set session to this exploit. It's just a parameter to exploit.
+Eventhough omitted in msfconsole listing, one can query for `info` of exploit and it tells pretty clearly that one must set session to this exploit. It's just a parameter to exploit. This exploit did not work with jenkins sec hole because it needs more priviledged access.
 
 Additional important commands include but are not limited to: `back` (unsets current exploit), `edit` (edits exploit's code, usable for checking out what exploit actually does).
 
