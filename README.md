@@ -162,7 +162,9 @@ msf exploit(jenkins_script_console) > exploit
 meterpreter > 
 ```
 
-Meterpreter console is additional part of metasploit and it's intention is to be stealthy console in remote machine. In example meterpreter is opened to a remote machine (the metasploittable3 vm via 55.55.55.5:8484). Now, because jenkins is not run with priviledged used we can't do anything really awesome directly (at least nothing that I'm aware of...).
+Meterpreter console is additional part of metasploit and it's intention is to be stealthy console in remote machine. In example meterpreter is opened to a remote machine (the metasploittable3 vm via 55.55.55.5:8484) and it's effectively a reverse shell. Comprehensive listing and additional info on meterpreter is available here: https://www.offensive-security.com/metasploit-unleashed/meterpreter-basics/
+
+Now, because jenkins is not run with priviledged used we can't do anything really awesome directly (at least nothing that I'm aware of...).
 
 Next step of using metasploitable is exploits that need session such as we have opened. We can run exploit that needs open session (usually reverse shell?) like this:
 ```
