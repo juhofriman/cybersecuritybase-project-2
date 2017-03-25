@@ -244,3 +244,4 @@ curl "55.55.55.5/wp-content/wp-config.php?foo=../"
 AND INDEED! An alert was triggered. Yay yay ya!
 03/25-15:16:37.119858  [**] [1:41420:1] SERVER-WEBAPP WordPress wp-config.php access via directory traversal attempt [**] [Classification: Web Application Attack] [Priority: 1] {TCP} 55.55.55.1:53409 -> 55.55.55.5:80
 ```
+I had really hard time enabling all the proper rules with pulled pork. So I just ended up doing `cat rules/snort.rules.original | sed 's/# alert/alert/' > rules/snort.rules`
