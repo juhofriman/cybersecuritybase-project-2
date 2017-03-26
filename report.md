@@ -84,9 +84,9 @@ alert tcp any any -> any $HTTP_PORTS (msg:"SERVER-WEBAPP password sent via POST 
 tadata:service http; classtype:policy-violation; sid:31939; rev:1;)
 ```
 
-I can trigger such an alarm like this: `curl -X POST -d"password=foo" 55.55.55.5/foo`, and loads and loads of applications still do that. To my understanding, the idea of this rule is to warn that passwords are sent over http instead of https. And then again, if application uses different keyword for passwords it does not get triggered. I.e. curl -X POST -d"pwd=foo" 55.55.55.5/foo` does not trigger an alarm.
+I can trigger such an alarm like this: `curl -X POST -d"password=foo" 55.55.55.5/foo`, and loads and loads of applications still do that. To my understanding, the idea of this rule is to warn that passwords are sent over http instead of https. And then again, if application uses different keyword for passwords it does not get triggered. I.e. `curl -X POST -d"pwd=foo" 55.55.55.5/foo` does not trigger an alarm.
 
-So this alarm does not inform us that someone is bruteforcing with caidao, but that we have an application in our network that propably sends passwords openly.
+Alarm raised does not inform us that someone is bruteforcing with caidao, but that we have an application in our network that propably sends passwords openly.
 
 # Summary
 
