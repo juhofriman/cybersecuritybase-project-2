@@ -1,7 +1,7 @@
 # cybersecuritybase-project-2
 
-This is my take on Cybersecurity base MOOC project 2.
-
+This is my take on Cybersecurity base MOOC project 2. These are just my notes. The assignment required is report.md in this repo.
+ 
 ## The setup
 
 Project was carried out with os x computer with metasploittable VM initialized via Vagrant. I modified the Vagrantfile provided slightly by exposing VM directly with known ip to host.
