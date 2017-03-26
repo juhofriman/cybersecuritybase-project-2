@@ -6,6 +6,10 @@ I acknowledge, that snort is pretty impressive piece of an application, I mean m
 
 It is really common, that internet facing services get loads and loads of malicious traffic just for checking what is actually beneath user interfaces. Do we really want an alert when someone just tries out various wordpress exploits to our machines which have absolutely nothing to do with PHP not to mention wordpress? Naturally, it's possible that we indeed do want an alert - in example, for blacklisting source address. But the bottom line is that the ruleset used must be really carefully crafted and revised reqularly. I also note, that snort is not something that someone just installs and then it just protects network. Using snort properly requires vast knowledge of the protected network and applications running in that network, not to mention keeping up to date with latest vulnerabilities.
 
+Next we examine an array of particular metasploit attacks against metasploitable3 with snort.
+
+## exploit/multi/http/struts2_content_type_ognl
+
 Struts2 multipart file upload vulnerability (https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5638) which allows attacker to execute remote code without credentials, was disclosed just couple of weeks ago. Even though metasploittable3 does not contain this vulnerability, at least to my knowing, I carried out a little experiment. When exploit was executed from metasploit to snort protected network, snort raised an alert `INDICATOR-SHELLCODE x86 inc ecx NOOP [**] [Classification: Executable code was detected`, but It could not identify the actual exploit. I examined the definition for that rule:
 
 ```
@@ -23,8 +27,6 @@ curl -H "X-foo: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" 55.55.55.5
 Indeed. Alarm was raised again. When I read more about this, rule makes perfect sense, and it is good and important.
 
 So snort is not peculiarly intelligent in it's own, but with careful enabling of rules it might be really good. I must mention, that I had every single rule enables, because I wanted to get as much false positives as I could in the first place. I googled for an rule to identify that particular struts exploit and it got detected when I added this rule https://gist.github.com/stamparm/a9cf56d40ac3ce5e48e36971946093f8. Alarm `Apache Struts Remote Code Execution (2017-5638` was raised nicely. Now, we must remember, that machine we are protecting is not vulnerable for this anyway!
-
-Next we examine an array of particular metasploit attacks against metasploitable3 with snort.
 
 ## auxiliary/dos/http/ms15_034_ulonglongadd
 
