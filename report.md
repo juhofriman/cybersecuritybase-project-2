@@ -49,7 +49,7 @@ This exploit opens meterpreter session to target machine pretty easily. My setup
 
 I think, the latter alert could easily be avoided just by using different certificate from metasploit. And again, that shellcode alert is really broad and usually is disabled.
 
-# auxiliary/scanner/http/http_put
+## auxiliary/scanner/http/http_put
 
 This is more of an security misconfiguration than evil-mind-bogling-ingenious vulnerability. But what was interesting our snort did not have any clue what is going on.
 
